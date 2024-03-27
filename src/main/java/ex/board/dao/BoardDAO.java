@@ -15,6 +15,11 @@ public class BoardDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	/**
+	 * @param boardVO
+	 * @return
+	 * @throws Exception
+	 */
 	public List<BoardVO> loadBoard(BoardVO boardVO) throws Exception {
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		return mapper.loadBoard(boardVO);

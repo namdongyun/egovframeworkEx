@@ -31,6 +31,11 @@
             </c:forEach>
         </tbody>
     </table>
+    
+    <div class="create-button">
+    <a href="/board/create">게시글 생성</a>
+	</div>
+    
 </div>
 </body>
 </html>

@@ -3,6 +3,10 @@ package ex.board.vo;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * @author HP 15
+ *
+ */
 @Getter
 @Setter
 public class BoardVO {
