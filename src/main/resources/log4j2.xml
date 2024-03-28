@@ -3,7 +3,7 @@
 <Configuration>
     <Appenders>
         <Console name="console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d %5p [%c] %m%n" />
+            <PatternLayout pattern="%d %5p [%c lines - %L] %m%n" />
         </Console>
     </Appenders>
     <Loggers>

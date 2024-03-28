@@ -9,5 +9,6 @@ import ex.board.vo.BoardVO;
 @Mapper
 public interface BoardMapper {
 	
-	List<BoardVO> loadBoard(BoardVO boardVO) throws Exception;
+	List<BoardVO> loadBoard(BoardVO boardVO) throws Exception;	// 게시글 불러오기
+	void createBoard(BoardVO boardVO) throws Exception;	// 게시글 등록하기
 }

@@ -5,7 +5,7 @@
 <head>
     <title>게시판 목록</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/resources/css/list.css"> <!-- 여기에 CSS 파일을 참조하는 코드를 추가합니다 -->
+    <link rel="stylesheet" type="text/css" href="/resources/css/board/list.css">
 </head>
 <body>
 <div class="container">

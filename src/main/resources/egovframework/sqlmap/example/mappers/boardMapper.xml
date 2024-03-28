@@ -5,4 +5,9 @@
 	<select id="loadBoard" resultType="ex.board.vo.BoardVO">
 		SELECT * FROM board
 	</select>
+	
+	<insert id="createBoard" parameterType="ex.board.vo.BoardVO">
+		INSERT INTO board (title, content, name, date)
+		VALUES (#{title}, #{content}, #{name}, NOW())
+	</insert>
 </mapper>

@@ -10,6 +10,16 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BoardVO {
+	@Override
+	public String toString() {
+		
+		return "BoardVO{" +
+	            "title='" + title + '\'' +
+	            ", content='" + content + '\'' +
+	            ", writer='" + name + '\'' +
+	            ", date='" + date + '\'' + 
+	            '}';
+	}
 	private int id;
 	private String title;
 	private String content;
