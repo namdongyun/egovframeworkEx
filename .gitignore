@@ -2,6 +2,12 @@
 # Compiled class file
 *.class
 
+lecture
+target
+pom.properties
+.classpath
+MANIFEST.MF
+
 # Log file
 *.log
 
