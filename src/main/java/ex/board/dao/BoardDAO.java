@@ -41,4 +41,34 @@ public class BoardDAO {
 	    log.info("BoardDAO.java -> createBoard 실행완료");
 	}
 
+	
+	/**
+	 * @param id
+	 * @return 게시글 상세보기
+	 * @throws Exception
+	 */
+	public BoardVO getBoard(int id) throws Exception {
+		
+		log.info("BoardDAO.java -> getBoard 실행");
+		
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		
+		log.info("BoardDAO.java -> getBoard 실행 완료");
+		
+		return mapper.getBoard(id);
+	}
+
+	/** 
+	 * 게시글 삭제
+	 * @param id
+	 */
+	public void deleteBoard(int id) {
+		log.info("BoardDAO.java -> deleteBoard 실행");
+		
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		mapper.deleteBoard(id);
+		
+		log.info("BoardDAO.java -> deleteBoard 실행 완료");
+	}
+
 }

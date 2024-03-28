@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +37,22 @@ public class BoardController {
         return "board/list";
     }
     
+    // 게시글 들어가기
+    @GetMapping("/detail/{id}")
+    public String boardDetail(@PathVariable("id") int id, Model model) throws Exception {
+    	
+    	log.info("게시글 들어가기 get /detail/{id}");
+    	
+        BoardVO boardVO = boardService.getBoard(id);
+        model.addAttribute("boardVO", boardVO);
+        
+        System.out.println(boardVO.toString());
+        
+        log.info("게시글 들어가기 get /detail/{id} 완료");
+        
+        return "board/detailBoard";
+    }
+    
     // 게시글 생성 페이지
     @GetMapping("/create")
     public String showCreateForm(Model model) throws Exception {
@@ -59,6 +76,16 @@ public class BoardController {
     	
     	log.info("게시글 생성 완료 POST /createBoard");
     	
+        return "redirect:/board/list";
+    }
+    
+    // 게시글 삭제 버튼 클릭
+    @PostMapping("/delete/{id}")
+    public String deleteBoard(@PathVariable("id") int id) {
+        // 게시글 삭제 로직 수행
+        boardService.deleteBoard(id);
+
+        // 게시글 목록 페이지로 리다이렉트
         return "redirect:/board/list";
     }
 }

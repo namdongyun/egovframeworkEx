@@ -34,5 +34,19 @@ public class BoardServiceImpl implements BoardService {
 		
 		log.info("createBoard service 실행완료");
 	}
+
+	// 게시글 상세보기
+	@Override
+	public BoardVO getBoard(int id) throws Exception {
+		
+		return boardDAO.getBoard(id);
+	}
+
+	// 게시글 삭제
+	@Override
+	public void deleteBoard(int id) {
+		
+		boardDAO.deleteBoard(id);
+	}
 	
 }

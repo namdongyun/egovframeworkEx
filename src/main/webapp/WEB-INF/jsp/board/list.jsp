@@ -24,7 +24,7 @@
             <c:forEach var="result" items="${list}">
                 <tr>
                     <td>${result.id}</td>
-                    <td><a href="/board/detail?id=${result.id}">${result.title}</a></td>
+                    <td><a href="/board/detail/${result.id}">${result.title}</a></td>
                     <td>${result.name}</td>
                     <td>${result.date}</td>
                 </tr>
