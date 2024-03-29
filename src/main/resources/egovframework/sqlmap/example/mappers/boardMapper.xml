@@ -3,9 +3,19 @@
 
 <mapper namespace="ex.board.service.BoardMapper">
 	<!-- 게시글 불러오기 -->
+	<!-- #{pageSize} : 한 페이지에 표시할 게시글의 수 -->
+	<!-- #{offset} : 건너뛸 게시글의 수 ((현재 페이지 번호 - 1) * 페이지당 게시글 수) -->
 	<select id="loadBoard" resultType="boardVO">
 		SELECT * FROM board
+		ORDER BY id DESC
+		LIMIT #{pageSize} OFFSET #{offset}
 	</select>
+	
+	<!-- 게시글 전체 데이터 개수 조회 -->
+	<select id="countTotalBoardElements" resultType="int">
+    SELECT COUNT(*) FROM board;
+	</select>
+	
 	
 	<!-- 게시글 생성 -->
 	<insert id="createBoard" parameterType="boardVO">
@@ -22,4 +32,17 @@
 	<delete id="deleteBoard" parameterType="int">
 		delete from board where id = #{id}
 	</delete>
+	
+	<!-- 게시글 수정 -->
+	<update id="editBoard" parameterType="boardVO">
+	UPDATE
+		board
+	SET
+		title = #{title},
+		content = #{content},
+		name = #{name},
+		date = NOW()
+	WHERE
+		id = #{id}
+	</update>
 </mapper>

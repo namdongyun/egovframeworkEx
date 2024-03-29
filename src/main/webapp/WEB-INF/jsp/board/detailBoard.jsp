@@ -68,11 +68,12 @@
         ${boardVO.content}
     </div>
     <form action="/board/delete/${boardVO.id}" method="post">
-        <!-- CSRF 토큰 필드 추가가 필요할 수 있습니다. -->
-        <input type="hidden" name="_method" value="delete" /> <!-- Spring에서 HTTP 메소드 오버라이드를 사용하는 경우 -->
+        <input type="hidden" name="_method" value="delete" />
         <button type="submit" onclick="return confirm('정말로 삭제하시겠습니까?');">게시글 삭제</button>
     </form>
-
+    <form action="/board/edit/${boardVO.id}" method="get">
+    	<button type="submit">게시글 수정</button>
+	</form>
     <div class="navigation">
         <a href="/board/list">목록으로 돌아가기</a>
     </div>

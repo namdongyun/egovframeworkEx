@@ -17,7 +17,7 @@ public class BoardDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	/**
+	/** 게시글 불러오기
 	 * @param boardVO
 	 * @return BoardVO
 	 * @throws Exception
@@ -27,7 +27,16 @@ public class BoardDAO {
 		return mapper.loadBoard(boardVO);
 	}
 	
-	/**
+	/** 전체 게시글 데이터 개수 조회
+	 * @return
+	 * @throws Exception
+	 */
+	public int countTotalBoardElements() throws Exception {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		return mapper.countTotalBoardElements();
+	}
+	
+	/** 게시글 생성
 	 * @param boardVO
 	 * @throws Exception
 	 */
@@ -61,14 +70,22 @@ public class BoardDAO {
 	/** 
 	 * 게시글 삭제
 	 * @param id
+	 * @throws Exception 
 	 */
-	public void deleteBoard(int id) {
+	public void deleteBoard(int id) throws Exception {
 		log.info("BoardDAO.java -> deleteBoard 실행");
 		
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		mapper.deleteBoard(id);
 		
 		log.info("BoardDAO.java -> deleteBoard 실행 완료");
+	}
+
+	public void editBoard(BoardVO boardVO) throws Exception {
+		
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		mapper.editBoard(boardVO);
+		
 	}
 
 }

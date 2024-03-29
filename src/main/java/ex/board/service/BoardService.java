@@ -9,6 +9,7 @@ public interface BoardService {
 	public List<BoardVO> loadBoard(BoardVO boardVO) throws Exception;
 	public void createBoard(BoardVO boardVO) throws Exception;
 	public BoardVO getBoard(int id) throws Exception;
-	public void deleteBoard(int id);
+	public void deleteBoard(int id) throws Exception;
+	public void editBoard(int id, BoardVO boardVO) throws Exception;
 
 }

@@ -1,7 +1,9 @@
 package ex.board.vo;
 
+import ex.cmmn.vo.PageVO;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * @author HP 15
@@ -9,17 +11,8 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class BoardVO {
-	@Override
-	public String toString() {
-		
-		return "BoardVO{" +
-	            "title='" + title + '\'' +
-	            ", content='" + content + '\'' +
-	            ", writer='" + name + '\'' +
-	            ", date='" + date + '\'' + 
-	            '}';
-	}
+@ToString
+public class BoardVO extends PageVO{
 	private int id;
 	private String title;
 	private String content;

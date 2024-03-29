@@ -21,16 +21,33 @@
             </tr>
         </thead>
         <tbody>
-            <c:forEach var="result" items="${list}">
+            <c:forEach var="board" items="${list}">
                 <tr>
-                    <td>${result.id}</td>
-                    <td><a href="/board/detail/${result.id}">${result.title}</a></td>
-                    <td>${result.name}</td>
-                    <td>${result.date}</td>
+                    <td>${board.id}</td>
+                    <td><a href="/board/detail/${board.id}">${board.title}</a></td>
+                    <td>${board.name}</td>
+                    <td>${board.date}</td>
                 </tr>
             </c:forEach>
         </tbody>
     </table>
+    
+    <!-- 페이징 처리 -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            <c:if test="${pageVO.pageNum != 1}">
+                <li class="page-item"><a class="page-link" href="?page=${pageVO.pageNum - 1}">이전</a></li>
+            </c:if>
+            <c:forEach begin="1" end="${pageVO.totalPages}" var="i">
+                <li class="page-item ${pageVO.pageNum == i ? 'active' : ''}">
+                    <a class="page-link" href="?page=${i}">${i}</a>
+                </li>
+            </c:forEach>
+            <c:if test="${pageVO.pageNum < pageVO.totalPages}">
+                <li class="page-item"><a class="page-link" href="?page=${pageVO.pageNum + 1}">다음</a></li>
+            </c:if>
+        </ul>
+    </nav>
     
     <div class="create-button">
     <a href="/board/create">게시글 생성</a>
