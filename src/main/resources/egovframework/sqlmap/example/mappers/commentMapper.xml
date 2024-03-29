@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ex.comment.service.CommentMapper">
+
+	<!-- 댓글 불러오기 -->
+	<select id="getComment" parameterType="int" resultType="commentVO">
+		SELECT * FROM board_comments
+		WHERE board_id = #{boardId}
+		ORDER BY id DESC
+	</select>
+	
+	<!-- 게시글 생성 -->
+	<insert id="create" parameterType="commentVO">
+		INSERT INTO board_comments (board_id, user_name, content, date)
+		VALUES (#{boardId}, #{userName}, #{content}, NOW())
+	</insert>
+	
+</mapper>

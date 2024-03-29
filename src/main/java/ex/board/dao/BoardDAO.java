@@ -2,6 +2,8 @@ package ex.board.dao;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,13 +19,20 @@ public class BoardDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	private BoardMapper mapper;
+	
+	@PostConstruct
+    public void init() {
+        mapper = sqlSession.getMapper(BoardMapper.class);
+    }
+	
 	/** 게시글 불러오기
 	 * @param boardVO
 	 * @return BoardVO
 	 * @throws Exception
 	 */
 	public List<BoardVO> loadBoard(BoardVO boardVO) throws Exception {
-		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		
 		return mapper.loadBoard(boardVO);
 	}
 	
@@ -32,7 +41,7 @@ public class BoardDAO {
 	 * @throws Exception
 	 */
 	public int countTotalBoardElements() throws Exception {
-		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		
 		return mapper.countTotalBoardElements();
 	}
 	
@@ -44,7 +53,6 @@ public class BoardDAO {
 		
 		log.info("BoardDAO.java -> createBoard 실행");
 		
-	    BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 	    mapper.createBoard(boardVO);
 	    
 	    log.info("BoardDAO.java -> createBoard 실행완료");
@@ -60,8 +68,6 @@ public class BoardDAO {
 		
 		log.info("BoardDAO.java -> getBoard 실행");
 		
-		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
-		
 		log.info("BoardDAO.java -> getBoard 실행 완료");
 		
 		return mapper.getBoard(id);
@@ -75,7 +81,6 @@ public class BoardDAO {
 	public void deleteBoard(int id) throws Exception {
 		log.info("BoardDAO.java -> deleteBoard 실행");
 		
-		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		mapper.deleteBoard(id);
 		
 		log.info("BoardDAO.java -> deleteBoard 실행 완료");
@@ -83,7 +88,6 @@ public class BoardDAO {
 
 	public void editBoard(BoardVO boardVO) throws Exception {
 		
-		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		mapper.editBoard(boardVO);
 		
 	}

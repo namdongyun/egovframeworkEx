@@ -6,55 +6,8 @@
 <head>
     <title>게시글 상세</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-        .board-detail {
-            width: 80%;
-            margin: 40px auto;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            padding: 20px;
-            border-radius: 8px;
-        }
-        .board-detail h2 {
-            font-size: 24px;
-            color: #333;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        .board-detail .meta {
-            font-size: 14px;
-            color: #666;
-            text-align: left;
-            margin-bottom: 20px;
-        }
-        .board-detail .content {
-            white-space: pre-wrap;
-            line-height: 1.6;
-            font-size: 16px;
-        }
-        .navigation {
-            text-align: center;
-            margin-top: 30px;
-        }
-        .navigation a {
-            display: inline-block;
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 15px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        .navigation a:hover {
-            background-color: #0056b3;
-        }
-    </style>
+	<link rel="stylesheet" type="text/css" href="/resources/css/board/detailBoard.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -78,6 +31,63 @@
         <a href="/board/list">목록으로 돌아가기</a>
     </div>
 </div>
+<!-- 댓글 섹션 시작 -->
+<div class="comment-section">
+    <h3>댓글</h3>
+    
+    <!-- 댓글 목록 -->
+    <div class="comments-list">
+        <c:forEach var="comment" items="${commentList}">
+            <div class="comment-item">
+                <strong>${comment.userName}</strong> <span>${comment.date}</span>
+                <p>${comment.content}</p>
+            </div>
+        </c:forEach>
+    </div>
+    
+    <!-- 댓글 입력 폼 -->
+    <form id="createComment">
+        <input type="hidden" name="boardId" value="${boardVO.id}"> <!-- 게시글 ID, 필요에 따라 수정 -->
+        <div class="form-group">
+            <label for="commentName">이름:</label>
+            <input type="text" id="commentName" name="userName" required>
+        </div>
+        <div class="form-group">
+            <label for="commentContent">댓글:</label>
+            <textarea id="commentContent" name="content" rows="4" required></textarea>
+        </div>
+        <input type="button" value="댓글달기" class="create-comment"/>
+    </form>
+    
+</div>
+<!-- 댓글 섹션 끝 -->
+<script type="text/javascript">
+	$(document).on("click", ".create-comment", function(){
+		
+		var formData = {
+				userName: $('#commentName').val(),
+		        content: $('#commentContent').val(),
+		        boardId: $('input[name=boardId]').val()
+		    };
+		
+		$.ajax({
+			url : "/comment/create",
+			type : "POST",
+			data : JSON.stringify(formData),
+			contentType: "application/json; charset=UTF-8",
+			dataType: 'json',
+		})
+		.done(function(response) {
+			console.log("save formData : ", formData);
+        	console.log(response);
+        })
+        .fail(function(response) {
+        	console.log("formData : ", formData);
+            console.error(response);
+        });	
+	});
+</script>
+
 
 </body>
 </html>
