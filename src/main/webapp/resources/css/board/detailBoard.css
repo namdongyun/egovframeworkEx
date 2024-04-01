@@ -52,3 +52,86 @@ body {
 .navigation a:hover {
 	background-color: #0056b3;
 }
+
+button {
+	display: inline-block;
+	background-color: #007bff;
+	color: #fff;
+	padding: 10px 15px;
+	text-decoration: none;
+	border-radius: 5px;
+	transition: background-color 0.3s ease;
+}
+
+/* 댓글 섹션 전체 스타일 */
+.comment-section {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ddd; /* 경계선 */
+    border-radius: 5px; /* 모서리 둥글게 */
+    background-color: #f9f9f9; /* 배경색 */
+}
+
+/* 댓글 목록 스타일 */
+.comments-list {
+    margin-bottom: 20px;
+}
+
+.comment-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee; /* 댓글 아이템 사이의 경계선 */
+}
+
+.comment-item strong {
+    font-size: 16px; /* 사용자 이름 크기 */
+    color: #333; /* 사용자 이름 색상 */
+}
+
+.comment-item span {
+    margin-left: 10px;
+    font-size: 14px; /* 날짜 텍스트 크기 */
+    color: #666; /* 날짜 텍스트 색상 */
+}
+
+.comment-item p {
+    margin-top: 5px;
+    font-size: 14px; /* 댓글 내용 텍스트 크기 */
+}
+
+/* 댓글 입력 폼 스타일 */
+#createComment {
+    margin-top: 20px;
+}
+
+#createComment .form-group {
+    margin-bottom: 15px;
+}
+
+#createComment label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px; /* 라벨 텍스트 크기 */
+}
+
+#createComment input[type="text"],
+#commentContent {
+    width: 100%; /* 입력 필드 너비 */
+    padding: 8px;
+    border: 1px solid #ccc; /* 입력 필드 경계선 */
+    border-radius: 4px; /* 입력 필드 모서리 둥글게 */
+}
+
+.create-comment {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff; /* 버튼 배경색 */
+    color: white; /* 버튼 텍스트 색상 */
+    border: none; /* 버튼 경계선 제거 */
+    border-radius: 4px; /* 버튼 모서리 둥글게 */
+    cursor: pointer; /* 마우스 오버 시 커서 변경 */
+}
+
+.create-comment:hover {
+    background-color: #0056b3; /* 버튼 호버 시 배경색 변경 */
+}
+

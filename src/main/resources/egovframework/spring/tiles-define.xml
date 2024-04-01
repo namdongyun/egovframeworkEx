@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+ 
+ <!-- https://vndn629.tistory.com/14 -->
+<tiles-definitions>
+	<!-- main layout -->
+	<!-- definition에서 name은 변수처럼 사용할 이름을 지정하고 template은 사용할 jsp를 지정 -->
+	<definition name="layout-tiles" template="/WEB-INF/tiles/tiles-layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/tiles/headerTemplate.jsp" />
+		<put-attribute name="left" value="/WEB-INF/tiles/sidebarTemplate.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="foot" value="/WEB-INF/tiles/footerTemplate.jsp" />
+	</definition>
+	
+	<definition name="*/*" extends="layout-tiles">
+		<put-attribute name="body" value="/WEB-INF/jsp/{1}/{2}.jsp" />
+		<put-attribute name="title" value="tiles 테스트" />
+	</definition>
+</tiles-definitions>

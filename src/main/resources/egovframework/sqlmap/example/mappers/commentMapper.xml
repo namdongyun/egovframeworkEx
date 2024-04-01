@@ -7,7 +7,6 @@
 	<select id="getComment" parameterType="int" resultType="commentVO">
 		SELECT * FROM board_comments
 		WHERE board_id = #{boardId}
-		ORDER BY id DESC
 	</select>
 	
 	<!-- 게시글 생성 -->
